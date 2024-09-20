@@ -1208,7 +1208,7 @@ function jobs ()
 			DIALOG_ESC=255
 
 			def_overlays=$(ls -1 ${OVERLAYDIR}/${overlay_prefix}*.dtbo | sed 's/^.*\('${overlay_prefix}'.*\)/\1/g' | sed 's/'${overlay_prefix}'-//g' | sed 's/.dtbo//g')
-			if [ $BOARDFAMILY == "rockchip-rk3588" ] && [ $BRANCH == "legacy" ]; then
+			if [[ $BOARDFAMILY == "rockchip-rk3588" ] || [ $BOARDFAMILY == "rk35xx" ]] && [[ $BRANCH == "legacy" ] || [ $BRANCH == "vendor"]; then
         		builtin_overlays=$(ls -1 ${OVERLAYDIR}/*.dtbo | grep -v ${overlay_prefix} | sed 's#^'${OVERLAYDIR}'/##' | sed 's/.dtbo//g')
         		def_overlays="$def_overlays"'\n'"$builtin_overlays"
 			fi
